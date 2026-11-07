@@ -1,0 +1,6 @@
+{
+  "name": "Campus Driver - Exclusive Download Portal",
+  "description": "High-speed 4K UHD download portal for Campus Driver series, with active cloud mirrors and format selection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
