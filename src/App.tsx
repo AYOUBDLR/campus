@@ -4,11 +4,11 @@
  */
 
 import React, { useState, useMemo } from 'react';
-import { Download, Check, Users, Star, Play, Sparkles, Film, ArrowRight, LayoutGrid, CheckCircle2, Search, X } from 'lucide-react';
+import { Download, Check, Users, Star, Play, Sparkles, Film, ArrowRight, CheckCircle2, Search, X } from 'lucide-react';
 import { SyncModal } from './components/SyncModal';
 import { VideoModal } from './components/VideoModal';
 
-type ActiveRelease = 'campus-drivers' | 'south-park' | 'both';
+type ActiveRelease = 'campus-drivers' | 'south-park';
 
 export default function App() {
   const [activeRelease, setActiveRelease] = useState<ActiveRelease>('campus-drivers');
@@ -152,19 +152,6 @@ export default function App() {
               <span className="truncate">South Park</span>
               <span className="text-[10px] uppercase px-1.5 py-0.5 rounded bg-black/30 font-sans hidden sm:inline">Full HD</span>
             </button>
-
-            <button
-              onClick={() => setActiveRelease(activeRelease === 'both' ? 'campus-drivers' : 'both')}
-              title="View both releases side by side"
-              className={`py-2 sm:py-2.5 px-3 rounded-xl text-xs font-mono transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
-                activeRelease === 'both'
-                  ? 'bg-gradient-to-r from-[#ff0077] to-[#ff5500] text-white shadow-[0_0_20px_rgba(255,0,119,0.45)]'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-              }`}
-            >
-              <LayoutGrid className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Both</span>
-            </button>
           </div>
         </div>
       )}
@@ -182,13 +169,13 @@ export default function App() {
         </div>
       )}
 
-      {/* RELEASES CONTAINER (Single or Dual Grid) */}
-      <div className={`relative z-10 w-full ${!isSearching && activeRelease === 'both' ? 'max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-6' : 'max-w-xl'}`}>
+      {/* RELEASES CONTAINER */}
+      <div className="relative z-10 w-full max-w-xl">
 
         {/* ======================================================== */}
         {/* RELEASE 1: CAMPUS DRIVERS CARD (100% Faithful to Image 1 & 2) */}
         {/* ======================================================== */}
-        {((!isSearching && (activeRelease === 'campus-drivers' || activeRelease === 'both')) || (isSearching && matchesCampusDrivers)) && (
+        {((!isSearching && activeRelease === 'campus-drivers') || (isSearching && matchesCampusDrivers)) && (
           <main className="w-full bg-[#0b0e18] border border-slate-800/80 rounded-3xl shadow-[0_20px_70px_rgba(0,0,0,0.85),0_0_50px_rgba(255,0,119,0.15)] overflow-hidden">
             {/* TOP HAZARD STRIPE BANNER */}
             <div className="hazard-stripes py-2.5 px-4 text-center select-none shadow-md">
@@ -379,7 +366,7 @@ export default function App() {
         {/* ======================================================== */}
         {/* RELEASE 2: SOUTH PARK CARD (100% Faithful to image_e6a65502) */}
         {/* ======================================================== */}
-        {((!isSearching && (activeRelease === 'south-park' || activeRelease === 'both')) || (isSearching && matchesSouthPark)) && (
+        {((!isSearching && activeRelease === 'south-park') || (isSearching && matchesSouthPark)) && (
           <main className="w-full bg-[#0b0e18] border border-slate-800/80 rounded-3xl shadow-[0_20px_70px_rgba(0,0,0,0.85),0_0_50px_rgba(255,0,119,0.15)] overflow-hidden">
             {/* TOP HAZARD STRIPE BANNER */}
             <div className="hazard-stripes py-2.5 px-4 text-center select-none shadow-md">
