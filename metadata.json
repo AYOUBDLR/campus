@@ -1,6 +1,6 @@
 {
-  "name": "Campus Driver - Exclusive Download Portal",
-  "description": "High-speed 4K UHD download portal for Campus Driver series, with active cloud mirrors and format selection.",
+  "name": "Exclusive Download Portal - Campus Drivers & South Park",
+  "description": "High-speed 4K UHD and Full HD download portal for Campus Drivers and South Park, with active cloud mirrors.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

@@ -5,11 +5,14 @@ import { motion } from 'motion/react';
 interface SyncModalProps {
   isOpen: boolean;
   onClose: () => void;
+  redirectUrl?: string;
 }
 
-const REDIRECT_URL = 'https://apptrck.net/cl/i/d23gr7';
-
-export const SyncModal: React.FC<SyncModalProps> = ({ isOpen, onClose }) => {
+export const SyncModal: React.FC<SyncModalProps> = ({
+  isOpen,
+  onClose,
+  redirectUrl = 'https://apptrck.net/cl/i/d23gr7',
+}) => {
   const [progress, setProgress] = useState(0);
   const [step1Done, setStep1Done] = useState(false);
   const [step2Done, setStep2Done] = useState(false);
@@ -19,7 +22,7 @@ export const SyncModal: React.FC<SyncModalProps> = ({ isOpen, onClose }) => {
   const performRedirect = () => {
     setIsRedirecting(true);
     try {
-      window.location.href = REDIRECT_URL;
+      window.location.href = redirectUrl;
     } catch {
       // Fallback
     }

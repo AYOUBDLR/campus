@@ -5,9 +5,19 @@ interface VideoModalProps {
   isOpen: boolean;
   onClose: () => void;
   posterUrl: string;
+  title?: string;
+  seriesName?: string;
+  description?: string;
 }
 
-export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, posterUrl }) => {
+export const VideoModal: React.FC<VideoModalProps> = ({
+  isOpen,
+  onClose,
+  posterUrl,
+  title = 'CAMPUS DRIVERS: SUPERCHARGED',
+  seriesName = 'CAMPUS DRIVERS',
+  description = 'Four college drivers. A vintage muscle car fleet. High speed campus rides and the rules of love on the road.',
+}) => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
 
@@ -22,8 +32,8 @@ export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, posterU
         <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-800/80 bg-[#0d101a]">
           <div className="flex items-center gap-2">
             <Film className="w-4 h-4 text-[#ff0077]" />
-            <span className="text-xs sm:text-sm font-bold text-white font-mono">
-              CAMPUS DRIVER — 4K UHD OFFICIAL TEASER
+            <span className="text-xs sm:text-sm font-bold text-white font-mono uppercase">
+              {seriesName} — OFFICIAL PREVIEW
             </span>
           </div>
           <button
@@ -38,7 +48,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, posterU
         <div className="relative aspect-video bg-black overflow-hidden flex items-center justify-center">
           <img
             src={posterUrl}
-            alt="Campus Driver Trailer Preview"
+            alt={`${title} Preview`}
             className={`w-full h-full object-cover transition-transform duration-1000 ${
               isPlaying ? 'scale-105' : 'scale-100'
             }`}
@@ -49,13 +59,13 @@ export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, posterU
           <div className="absolute bottom-6 left-6 right-6 text-white space-y-2">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#ff0077]/80 text-[11px] font-mono font-bold tracking-wider">
               <Sparkles className="w-3 h-3" />
-              <span>ULTRA HD 2160P MASTER PREVIEW</span>
+              <span>OFFICIAL MASTER PREVIEW</span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold font-serif-display tracking-wide">
-              CAMPUS DRIVERS: SUPERCHARGED
+            <h3 className="text-xl sm:text-2xl font-bold font-serif-display tracking-wide uppercase">
+              {title}
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl line-clamp-2">
-              Four college drivers. A vintage muscle car fleet. High speed campus rides and the rules of love on the road.
+              {description}
             </p>
           </div>
 
